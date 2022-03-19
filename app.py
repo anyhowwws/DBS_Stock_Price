@@ -20,9 +20,7 @@ def index():
         model = load("Regression.joblib")
         pred = model.predict([[float(rates)]])
         PRED="$"+str(round(pred[0][0],2))
-        #Rate=round(float(rates),2)
-        #s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) + PRED
-        s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) 
+        s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: "%(float(rates)) 
         i = "Enter another amount above for another prediction!"
         return(render_template("index.html",rate=s,results=PRED,instructions=i))
                
