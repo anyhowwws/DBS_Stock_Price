@@ -18,12 +18,13 @@ def index():
     if request.method =="POST":
         rates = request.form.get("rates")
         model = load("Regression.joblib")
-        pred = model.predict([[float(rates)]])
+        pred = model.predict(float(rates))
         s = "The predicted DBS share price is " + str(pred)
         return(render_template("index.html",results=s))
                
     else:
-        return(render_template("index.html",results="2"))
+        defaultResponse = "Enter an amount above for an estimation!"
+        return(render_template("index.html",results = defaultResponse))
 
 if __name__=="__main__": #required if not in DEV env
     app.run()
