@@ -27,7 +27,7 @@ def index():
     else:
         defaultResults = "~.~.~.~.~.~.~.~.~WELCOME~.~.~.~.~.~.~.~.~"
         defaultResponse = "Enter an amount above for an estimation!"
-        return(render_template("index.html",results = defaultResults ,instructions=defaultResponse)
+        return(render_template("index.html",results = defaultResults ,instructions=defaultResponse))
 
 if __name__=="__main__": #required if not in DEV env
     app.run()
