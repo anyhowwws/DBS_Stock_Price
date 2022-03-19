@@ -17,7 +17,7 @@ app = Flask(__name__)
 def index():
     if request.method =="POST":
         rates = request.form.get("rates")
-        model = load("/Users/hows/Documents/Regression.joblib")
+        model = load("Regression.joblib")
         pred = model.predict([[float(rates)]])
         s = "The predicted DBS share price is " + str(pred)
         return(render_template("index.html",results=s))
