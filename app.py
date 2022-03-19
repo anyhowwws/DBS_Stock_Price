@@ -19,7 +19,8 @@ def index():
         rates = request.form.get("rates")
         model = load("Regression.joblib")
         pred = model.predict([[float(rates)]])
-        s = "The predicted DBS share price is: " + str(pred)
+        PRED = str(round(pred,2))
+        s = "The predicted DBS share price is: $" + PRED[2:-2]
         return(render_template("index.html",results=s))
                
     else:
