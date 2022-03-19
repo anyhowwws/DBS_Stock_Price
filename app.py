@@ -19,7 +19,7 @@ def index():
         rates = request.form.get("rates")
         model = load("Regression.joblib")
         pred = model.predict([[float(rates)]])
-        PRED=str(round(pred[0][0],2))
+        PRED="$"+str(round(pred[0][0],2))
         #Rate=round(float(rates),2)
         #s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) + PRED
         s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) 
@@ -30,7 +30,7 @@ def index():
         defaultRate=""
         defaultResults = ""
         defaultResponse = "Enter an amount above for an estimation!"
-        return(render_template("index.html",rate=defaultRate,results = defaultResponse ,instructions=defaultResults))
+        return(render_template("index.html",rate=defaultRate,results = defaultResults ,instructions=defaultResponse))
 
 if __name__=="__main__": #required if not in DEV env
     app.run()
