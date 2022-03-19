@@ -20,14 +20,17 @@ def index():
         model = load("Regression.joblib")
         pred = model.predict([[float(rates)]])
         PRED=str(round(pred[0][0],2))
-        s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) + PRED
+        #Rate=round(float(rates),2)
+        #s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) + PRED
+        s = "According to my humble prediction... when USD/SGD is %.2f, DBS share price should be valued at: $"%(float(rates)) 
         i = "Enter another amount above for another prediction!"
-        return(render_template("index.html",results=s,instructions=i))
+        return(render_template("index.html",rate=s,results=PRED,instructions=i))
                
     else:
+        defaultRate=""
         defaultResults = ""
         defaultResponse = "Enter an amount above for an estimation!"
-        return(render_template("index.html",results = defaultResponse ,instructions=defaultResults))
+        return(render_template("index.html",rate=defaultRate,results = defaultResponse ,instructions=defaultResults))
 
 if __name__=="__main__": #required if not in DEV env
     app.run()
